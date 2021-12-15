@@ -13,7 +13,7 @@ Collaborates: [Omer Aden](https://github.com/omer6546), [Almog Reuveny](https://
 
 
 
-### Screens:
+## Screens:
   * LogIn Activity - [here](https://github.com/almogre02/FaceMusic/blob/main/app/src/main/java/com/lampa/emotionrecognition/LoginActivity.java)
   * Welcome Activity - [here](https://github.com/almogre02/FaceMusic/blob/main/app/src/main/java/com/lampa/emotionrecognition/WelcomeActivity.java)
   * Main Activity - [here](https://github.com/almogre02/FaceMusic/blob/main/app/src/main/java/com/lampa/emotionrecognition/MainActivity.java)
