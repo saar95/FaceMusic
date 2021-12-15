@@ -10,5 +10,8 @@ After detection complete the face image area converted into greyscale 48*48 pixe
 Finally, converted area fed to the [TensorFlow Light](https://www.tensorflow.org/lite/guide) convolutional neural network model (simple_classifier.tflite).
 The model provide output that consist of probabilities for each class: angry, disgust, fear, happy, neutral, sad, surprise.  
 
+(https://user-images.githubusercontent.com/20986238/146235701-4a91d541-29f8-4fdb-9999-c7a6fdd8f42e.jpg)
+
+
 <img src="/images/example.png" width="288" height="512">
 
