@@ -14,5 +14,5 @@ The model provide output that consist of probabilities for each class: angry, di
 
 
 
-<img src="/images/example.png" width="288" height="512">
+<img src="https://user-images.githubusercontent.com/20986238/146235701-4a91d541-29f8-4fdb-9999-c7a6fdd8f42e.jpg" width="288" height="512">
 
