@@ -70,5 +70,7 @@ public class RegisterActivity extends AppCompatActivity{
     }
 
 
-
+    public void ReturnToLoginScreenOnClick(View view) {
+        startActivity(new Intent(RegisterActivity.this,LoginActivity.class));
+    }
 }

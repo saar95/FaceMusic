@@ -46,17 +46,23 @@ public class LoginActivity extends AppCompatActivity {
     public void loginOnClick(View view) {
         EditText emailEditText=findViewById(R.id.editText_email);
         EditText passwordEditText=findViewById(R.id.editText_password);
-        mAuth.signInWithEmailAndPassword(emailEditText.getText().toString(), passwordEditText.getText().toString())
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            startActivity(new Intent(LoginActivity.this,WelcomeActivity.class));
-                        } else {
-                            Toast.makeText(LoginActivity.this,"Login failed, please try again",Toast.LENGTH_LONG).show();
+        if (emailEditText.getText().toString().trim().length() == 0 || passwordEditText.getText().toString().trim().length() == 0){
+            Toast.makeText(LoginActivity.this,"Please fill all the required fields ",Toast.LENGTH_LONG).show();
+        }
+        else {
+            mAuth.signInWithEmailAndPassword(emailEditText.getText().toString(), passwordEditText.getText().toString())
+                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                startActivity(new Intent(LoginActivity.this,WelcomeActivity.class));
+                            } else {
+                                Toast.makeText(LoginActivity.this,"Login failed, please try again",Toast.LENGTH_LONG).show();
+                            }
                         }
-                    }
-                });
+                    });
+        }
+
 
 
     }
