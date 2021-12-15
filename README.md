@@ -4,8 +4,6 @@ This app detects your emotions based on your picture and creates playlists accor
 
 YouTube Link: [here](https://github.com/LeveI-Up/AI_Ex8/blob/main/%D7%9E%D7%98%D7%9C%D7%94%208.pdf)
 
-Collaborates: Omer Aden, Almog Reuveny, Saar Barel
-
 Collaborates: [Omer Aden](https://github.com/omer6546), [Almog Reuveny](https://github.com/almogre02), [Saar Barel](https://github.com/saar95)
 
 
