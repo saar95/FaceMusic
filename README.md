@@ -2,6 +2,8 @@
 # FaceMusic
 This app detects your emotions based on your picture and creates playlists according to your mood.  
 
+YouTube Link:[here](https://github.com/LeveI-Up/AI_Ex8/blob/main/%D7%9E%D7%98%D7%9C%D7%94%208.pdf)
+
 ## The classification (by CNN model)
 To detect faces on an image the application uses [ML Kit](https://developers.google.com/ml-kit).
 After detection complete the face image area converted into greyscale 48*48 pixel format, each pixel represents as [0, 1] float number.
