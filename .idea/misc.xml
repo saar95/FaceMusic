@@ -3,14 +3,23 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Omer/Documents/GitHub/FaceMusic1/app/src/main/res/drawable-v24/ic_age_focused.xml" value="0.12708333333333333" />
         <entry key="..\:/Users/Omer/Documents/GitHub/FaceMusic1/app/src/main/res/drawable-v24/ic_email_focused.xml" value="0.2074074074074074" />
         <entry key="..\:/Users/Omer/Documents/GitHub/FaceMusic1/app/src/main/res/drawable-v24/ic_lock_focused.xml" value="0.2074074074074074" />
+        <entry key="..\:/Users/Omer/Documents/GitHub/FaceMusic1/app/src/main/res/drawable-v24/ic_name_focused.xml" value="0.12708333333333333" />
+        <entry key="..\:/Users/Omer/Documents/GitHub/FaceMusic1/app/src/main/res/drawable/costum_age_icon.xml" value="0.12708333333333333" />
         <entry key="..\:/Users/Omer/Documents/GitHub/FaceMusic1/app/src/main/res/drawable/costum_email_icon.xml" value="0.2074074074074074" />
+        <entry key="..\:/Users/Omer/Documents/GitHub/FaceMusic1/app/src/main/res/drawable/costum_input_age.xml" value="0.12708333333333333" />
+        <entry key="..\:/Users/Omer/Documents/GitHub/FaceMusic1/app/src/main/res/drawable/costum_input_name.xml" value="0.12708333333333333" />
         <entry key="..\:/Users/Omer/Documents/GitHub/FaceMusic1/app/src/main/res/drawable/costum_lock_icon.xml" value="0.2074074074074074" />
+        <entry key="..\:/Users/Omer/Documents/GitHub/FaceMusic1/app/src/main/res/drawable/costum_name_icon.xml" value="0.12708333333333333" />
         <entry key="..\:/Users/Omer/Documents/GitHub/FaceMusic1/app/src/main/res/drawable/custom_input.xml" value="0.2203125" />
+        <entry key="..\:/Users/Omer/Documents/GitHub/FaceMusic1/app/src/main/res/drawable/ic_age.xml" value="0.12708333333333333" />
         <entry key="..\:/Users/Omer/Documents/GitHub/FaceMusic1/app/src/main/res/drawable/ic_email.xml" value="0.1" />
         <entry key="..\:/Users/Omer/Documents/GitHub/FaceMusic1/app/src/main/res/drawable/ic_lock.xml" value="0.1" />
+        <entry key="..\:/Users/Omer/Documents/GitHub/FaceMusic1/app/src/main/res/drawable/ic_name.xml" value="0.12708333333333333" />
         <entry key="..\:/Users/Omer/Documents/GitHub/FaceMusic1/app/src/main/res/layout/activity_login.xml" value="0.25" />
+        <entry key="..\:/Users/Omer/Documents/GitHub/FaceMusic1/app/src/main/res/layout/activity_register.xml" value="0.25" />
         <entry key="..\:/Users/Omer/Documents/GitHub/FaceMusic1/app/src/main/res/layout/activity_welcome.xml" value="0.25" />
         <entry key="..\:/Users/Omer/EmotionRecognition/app/src/main/res/layout/activity_login.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Omer/EmotionRecognition/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />

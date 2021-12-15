@@ -39,20 +39,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void registerOnClick(View view) {
-        EditText emailEditText=findViewById(R.id.editText_email);
-        EditText passwordEditText=findViewById(R.id.editText_password);
-        mAuth.createUserWithEmailAndPassword(emailEditText.getText().toString(), passwordEditText.getText().toString())
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            startActivity(new Intent(LoginActivity.this,WelcomeActivity.class));
-                        } else {
-                            Toast.makeText(LoginActivity.this,"Register failed, please try again",Toast.LENGTH_LONG).show();
-                        }
-                    }
-                });
-
+        startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
 
     }
 
@@ -73,4 +60,6 @@ public class LoginActivity extends AppCompatActivity {
 
 
     }
+
+
 }
