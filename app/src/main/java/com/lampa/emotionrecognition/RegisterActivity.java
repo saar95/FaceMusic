@@ -45,9 +45,9 @@ public class RegisterActivity extends AppCompatActivity{
     public void SignUPOnClick(View view) {
         EditText emailEditText=findViewById(R.id.editText_email);
         EditText passwordEditText=findViewById(R.id.editText_password);
-        TextView firstnameEditText=findViewById(R.id.editText_First_Name);
-        TextView lastnameEditText=findViewById(R.id.editText_Last_Name);
-        TextView ageEditText=findViewById(R.id.textView_Age);
+        EditText firstnameEditText=findViewById(R.id.editText_First_Name);
+        EditText lastnameEditText=findViewById(R.id.editText_Last_Name);
+        EditText ageEditText=findViewById(R.id.editText_Age);
 
 
         if (emailEditText.getText().toString().trim().length() == 0 || passwordEditText.getText().toString().trim().length() == 0 || firstnameEditText.getText().toString().trim().length() == 0 || lastnameEditText.getText().toString().trim().length() == 0 || ageEditText.getText().toString().trim().length() == 0){
