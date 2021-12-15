@@ -12,14 +12,14 @@ Collaborates: [Omer Aden](https://github.com/omer6546), [Almog Reuveny](https://
 
 
 ## Screens:
-  * LogIn Activity - [here](https://github.com/almogre02/FaceMusic/blob/main/app/src/main/java/com/lampa/emotionrecognition/LoginActivity.java)
-  * Welcome Activity - [here](https://github.com/almogre02/FaceMusic/blob/main/app/src/main/java/com/lampa/emotionrecognition/WelcomeActivity.java)
-  * Main Activity - [here](https://github.com/almogre02/FaceMusic/blob/main/app/src/main/java/com/lampa/emotionrecognition/MainActivity.java)
-  * Register Activity - [here](https://github.com/almogre02/FaceMusic/blob/main/app/src/main/java/com/lampa/emotionrecognition/RegisterActivity.java)
-  * User Class - [here](https://github.com/almogre02/FaceMusic/blob/main/app/src/main/java/com/lampa/emotionrecognition/UserClass.java)
-  * User Activity - [here](https://github.com/almogre02/FaceMusic/blob/main/app/src/main/java/com/lampa/emotionrecognition/UserActivity.java)
-  * Creator Activity - [here](https://github.com/almogre02/FaceMusic/blob/main/app/src/main/java/com/lampa/emotionrecognition/CreatorActivity.java)
-  * History Activity - [here](https://github.com/almogre02/FaceMusic/blob/main/app/src/main/java/com/lampa/emotionrecognition/HistoryActivity.java)
+  * [LogIn Activity](https://github.com/almogre02/FaceMusic/blob/main/app/src/main/java/com/lampa/emotionrecognition/LoginActivity.java)
+  * [Welcome Activity](https://github.com/almogre02/FaceMusic/blob/main/app/src/main/java/com/lampa/emotionrecognition/WelcomeActivity.java)
+  * [Main Activity](https://github.com/almogre02/FaceMusic/blob/main/app/src/main/java/com/lampa/emotionrecognition/MainActivity.java)
+  * [Register Activity](https://github.com/almogre02/FaceMusic/blob/main/app/src/main/java/com/lampa/emotionrecognition/RegisterActivity.java)
+  * [User Class](https://github.com/almogre02/FaceMusic/blob/main/app/src/main/java/com/lampa/emotionrecognition/UserClass.java)
+  * [User Activity](https://github.com/almogre02/FaceMusic/blob/main/app/src/main/java/com/lampa/emotionrecognition/UserActivity.java)
+  * [Creator Activity](https://github.com/almogre02/FaceMusic/blob/main/app/src/main/java/com/lampa/emotionrecognition/CreatorActivity.java)
+  * [History Activity](https://github.com/almogre02/FaceMusic/blob/main/app/src/main/java/com/lampa/emotionrecognition/HistoryActivity.java)
   
 
 
