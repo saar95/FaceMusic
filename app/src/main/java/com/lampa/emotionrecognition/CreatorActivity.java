@@ -1,7 +1,7 @@
 package com.lampa.emotionrecognition;
 
 //implements
-public class CreatorActivity extends UserClass{
+public class CreatorActivity extends User{
 
 
     public void uploadSongOnClick(){
