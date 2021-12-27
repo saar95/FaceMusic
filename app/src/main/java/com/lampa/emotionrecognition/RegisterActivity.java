@@ -52,6 +52,9 @@ public class RegisterActivity extends AppCompatActivity{
         ageEditText=findViewById(R.id.editText_Age);
         regBtn=findViewById(R.id.signup_btn);
         retrunToLoginBtn=findViewById(R.id.signin_btn);
+
+
+
     }
 
     @Override
@@ -97,6 +100,9 @@ public class RegisterActivity extends AppCompatActivity{
     }
     public void updateUI(FirebaseUser currentUser){
         String keyId = "User ID: "+myRef.push().getKey();
-        myRef.child(keyId).setValue(user);
+        myRef.child("Users").child(keyId).setValue(user);
     }
+
+
+
 }

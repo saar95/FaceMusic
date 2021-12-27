@@ -1,26 +1,80 @@
 package com.lampa.emotionrecognition;
 
 
+import java.util.Random;
+
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView;
 
+
+
+
+
+
+
+
+
+
 public class YoutubePlayer extends AppCompatActivity{
     private YouTubePlayerView youTubePlayerView;
+    private String choosenEmotion = MainActivity.determine_emotion;
+    private FirebaseAuth mAuth;
+    private FirebaseDatabase database;
+    private DatabaseReference myRef;
+    public String playlistToPlay;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.youtube_player);
+        mAuth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        database=FirebaseDatabase.getInstance("https://face-c2bc7-default-rtdb.europe-west1.firebasedatabase.app/");
+        myRef=database.getReference();
+        myRef.child("Songs").child(choosenEmotion).child("1").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.exists()){
+                    String data = snapshot.getValue().toString();
+                    System.out.println(data+"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+                    playlistToPlay=data;
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
+
 
         youTubePlayerView = findViewById(R.id.youtube_player_youtubeplayerview);
         getLifecycle().addObserver(youTubePlayerView);
@@ -28,10 +82,24 @@ public class YoutubePlayer extends AppCompatActivity{
         youTubePlayerView.addYouTubePlayerListener(new AbstractYouTubePlayerListener() {
             @Override
             public void onReady(@NonNull YouTubePlayer youTubePlayer) {
-                String videoId = "A-sfd1J8yX4";
+
+                //ChoosePlaylist(choosenEmotion);
+                String videoId = playlistToPlay;
+                System.out.println(videoId+" "+ choosenEmotion + " "+ "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
                 youTubePlayer.loadVideo(videoId,0);
 
             }
         });
+
     }
+
+    private int randomSong(int length){
+        Random rand = new Random();
+        int rand_int = rand.nextInt(length);
+        return  rand_int;
+    }
+
+
+
+
 }

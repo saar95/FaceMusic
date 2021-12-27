@@ -51,7 +51,7 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
-
+    public static String determine_emotion;
     private static final int GALLERY_REQUEST_CODE = 0;
     private static final int TAKE_PHOTO_REQUEST_CODE = 1;
 
@@ -380,8 +380,12 @@ public class MainActivity extends AppCompatActivity {
             faceGroup.add(new Pair<>(key, percentage));
         }
 
+        System.out.println(faceGroup.get(0).first);
+        determine_emotion=faceGroup.get(0).first;
+
         String groupName = getString(R.string.face) + " " + faceId;
         mClassificationResult.put(groupName, faceGroup);
+        startActivity(new Intent(this,YoutubePlayer.class));
     }
 
     // Get a rectangle that lies inside the image area
@@ -429,6 +433,9 @@ public class MainActivity extends AppCompatActivity {
             mTakePhotoButton.setEnabled(true);
             mPickImageButton.setEnabled(true);
         }
+    }
+    public String getDetermine_emotion(){
+        return determine_emotion;
     }
 }
 
