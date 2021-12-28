@@ -6,9 +6,18 @@ import java.util.Random;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationBuilderWithBuilderAccessor;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -86,13 +95,53 @@ public class YoutubePlayer extends AppCompatActivity{
                 //ChoosePlaylist(choosenEmotion);
                 String videoId = playlistToPlay;
                 System.out.println(videoId+" "+ choosenEmotion + " "+ "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+
+                /*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+                    NotificationChannel channel = new NotificationChannel("my not", "my not", NotificationManager.IMPORTANCE_DEFAULT);
+                    NotificationManager manager = getSystemService(NotificationManager.class);
+                    manager.createNotificationChannel(channel);
+                }
+
+
+                NotificationCompat.Builder builder = new NotificationCompat.Builder(YoutubePlayer.this, "note");
+                builder.setContentTitle("FaceMusic");
+                builder.setContentText("Here is a song for your mood - " + choosenEmotion);
+                builder.setSmallIcon(R.drawable.ic_notification);
+                builder.setAutoCancel(true);
+                NotificationManagerCompat managerCompat = NotificationManagerCompat.from(YoutubePlayer.this);
+                managerCompat.notify(1,builder.build());
+
+*/
+
+
                 youTubePlayer.loadVideo(videoId,0);
 
             }
         });
 
     }
-
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_bar_main,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.menu_logout:
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(this,LoginActivity.class));
+                finish();
+                return true;
+            case R.id.menu_home_screen:
+                startActivity(new Intent(this,WelcomeActivity.class));
+                return true;
+            case R.id.menu_back:
+                startActivity(new Intent(this,MainActivity.class));
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
     private int randomSong(int length){
         Random rand = new Random();
         int rand_int = rand.nextInt(length);
