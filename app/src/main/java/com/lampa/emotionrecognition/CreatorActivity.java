@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -15,9 +16,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.firebase.FirebaseError;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -31,12 +30,15 @@ public class CreatorActivity extends AppCompatActivity implements AdapterView.On
     private DatabaseReference myRef;
     private int ans;
     private String emotion;
+    private Button uploadSong,removeSong;
+    public static CreatorActivity instance;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_creator);
+        instance=this;
         mAuth = FirebaseAuth.getInstance();
         database= FirebaseDatabase.getInstance("https://face-c2bc7-default-rtdb.europe-west1.firebasedatabase.app/");
         myRef=database.getReference();
@@ -46,8 +48,32 @@ public class CreatorActivity extends AppCompatActivity implements AdapterView.On
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         emotionspinner.setAdapter(adapter);
         emotionspinner.setOnItemSelectedListener(this);
+        uploadSong = (Button) findViewById(R.id.uploadsong_btn);
+        removeSong = (Button) findViewById(R.id.removesong_btn);
+        uploadSong.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openUploadSongPopUp();
+            }
+        });
+        removeSong.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openRemoveSongPopUp();
+
+            }
+        });
 
 
+    }
+
+    private void openUploadSongPopUp() {
+        UploadSongPopUp pop = new UploadSongPopUp();
+        pop.show(getSupportFragmentManager(),"uploadSong");
+    }
+    private void openRemoveSongPopUp() {
+        RemoveSongPopUp pop = new RemoveSongPopUp();
+        pop.show(getSupportFragmentManager(),"removeSong");
     }
 
     public void logoutOnClick(View view) {
@@ -88,13 +114,12 @@ public class CreatorActivity extends AppCompatActivity implements AdapterView.On
 
     }
 
-    public void uploadSongOnClick(View view) {
+    public void uploadSongOnClick() {
         fireBaseLength("Songs/"+emotion);
-
 
     }
 
-    public void removeSongOnClick(View view) {
+    public void removeSongOnClick() {
             myRef.child("Songs").child(emotion).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot snapshot) {
@@ -149,7 +174,7 @@ public class CreatorActivity extends AppCompatActivity implements AdapterView.On
                     }
                 });
     }
-
+//Spinner
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long l) {
         String text = parent.getItemAtPosition(position).toString();

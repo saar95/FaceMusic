@@ -15,6 +15,7 @@ import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
 import android.provider.MediaStore;
 import android.util.Pair;
 import android.view.Menu;
@@ -412,7 +413,14 @@ public class MainActivity extends AppCompatActivity {
 
         String groupName = getString(R.string.face) + " " + faceId;
         mClassificationResult.put(groupName, faceGroup);
-        startActivity(new Intent(this,YoutubePlayer.class));
+
+        //5 sec wait time
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            public void run() {
+                startActivity(new Intent(MainActivity.this,YoutubePlayer.class));            }
+        }, 5000);   //5 seconds
+
 
     }
 
