@@ -58,39 +58,28 @@ public class YoutubePlayer extends AppCompatActivity{
     public String playlistToPlay;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.youtube_player);
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        database=FirebaseDatabase.getInstance("https://face-c2bc7-default-rtdb.europe-west1.firebasedatabase.app/");
-        myRef=database.getReference();
-        myRef.child("Songs").child(choosenEmotion).child("1").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.exists()){
-                    String data = snapshot.getValue().toString();
-                    playlistToPlay=data;
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
+        database = FirebaseDatabase.getInstance("https://face-c2bc7-default-rtdb.europe-west1.firebasedatabase.app/");
+        myRef = database.getReference();
+        randomSong();
 
 
 
 
-        youTubePlayerView = findViewById(R.id.youtube_player_youtubeplayerview);
+
+        /*youTubePlayerView = findViewById(R.id.youtube_player_youtubeplayerview);
         getLifecycle().addObserver(youTubePlayerView);
 
         youTubePlayerView.addYouTubePlayerListener(new AbstractYouTubePlayerListener() {
             @Override
             public void onReady(@NonNull YouTubePlayer youTubePlayer) {
-
+                randomSong();
                 //ChoosePlaylist(choosenEmotion);
                 String videoId = playlistToPlay;
 
@@ -109,13 +98,17 @@ public class YoutubePlayer extends AppCompatActivity{
                 NotificationManagerCompat managerCompat = NotificationManagerCompat.from(YoutubePlayer.this);
                 managerCompat.notify(1,builder.build());
 
-*/
+
 
 
                 youTubePlayer.loadVideo(videoId,0);
 
             }
         });
+
+    }
+
+         */
 
     }
     @Override
@@ -140,10 +133,49 @@ public class YoutubePlayer extends AppCompatActivity{
         }
         return super.onOptionsItemSelected(item);
     }
-    private int randomSong(int length){
-        Random rand = new Random();
-        int rand_int = rand.nextInt(length);
-        return  rand_int;
+    private void randomSong(){
+        youTubePlayerView = findViewById(R.id.youtube_player_youtubeplayerview);
+        getLifecycle().addObserver(youTubePlayerView);
+
+        myRef.child("Songs").child(choosenEmotion)
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        // get total available quest
+                        int size = (int) dataSnapshot.getChildrenCount();
+                        Random rand = new Random();
+                        int rand_int = rand.nextInt(size);
+                        System.out.println(rand_int+"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+                        myRef.child("Songs").child(choosenEmotion).child(String.valueOf(rand_int)).addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                if(snapshot.exists()){
+                                    String data = snapshot.getValue().toString();
+                                    System.out.println(data+"##############################");
+                                    youTubePlayerView.addYouTubePlayerListener(new AbstractYouTubePlayerListener() {
+                                        @Override
+                                        public void onReady(@NonNull YouTubePlayer youTubePlayer) {
+
+                                            youTubePlayer.loadVideo(data,0);
+
+                                        }
+                                    });
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
+
+                    }
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+
     }
 
 

@@ -38,6 +38,7 @@ public class LoginActivity extends AppCompatActivity {
         database=FirebaseDatabase.getInstance("https://face-c2bc7-default-rtdb.europe-west1.firebasedatabase.app/");
         myRef=database.getReference();
 
+
     }
 
     @Override

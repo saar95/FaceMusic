@@ -413,6 +413,7 @@ public class MainActivity extends AppCompatActivity {
 
         String groupName = getString(R.string.face) + " " + faceId;
         mClassificationResult.put(groupName, faceGroup);
+        Toast.makeText(MainActivity.this,"You will be automatically transferred to the song immediately",Toast.LENGTH_LONG).show();
 
         //5 sec wait time
         Handler handler = new Handler();
