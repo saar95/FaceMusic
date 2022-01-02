@@ -71,7 +71,6 @@ public class YoutubePlayer extends AppCompatActivity{
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot.exists()){
                     String data = snapshot.getValue().toString();
-                    System.out.println(data+"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
                     playlistToPlay=data;
                 }
             }
@@ -94,7 +93,6 @@ public class YoutubePlayer extends AppCompatActivity{
 
                 //ChoosePlaylist(choosenEmotion);
                 String videoId = playlistToPlay;
-                System.out.println(videoId+" "+ choosenEmotion + " "+ "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
 
                 /*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
                     NotificationChannel channel = new NotificationChannel("my not", "my not", NotificationManager.IMPORTANCE_DEFAULT);

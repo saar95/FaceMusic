@@ -42,6 +42,9 @@
             android:name=".WelcomeActivity"
             android:screenOrientation="portrait"></activity>
         <activity
+            android:name=".CreatorActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity
             android:name=".RegisterActivity"
             android:screenOrientation="portrait"></activity>
         <activity

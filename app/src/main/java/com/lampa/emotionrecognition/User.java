@@ -4,14 +4,12 @@ package com.lampa.emotionrecognition;
 import android.widget.EditText;
 
 public class User {
-    private static int userID=0;
     private String email;
     private String password;
     private String firstName;
     private String lastName;
     private String age;
     private boolean creator;
-    private int key;
 
 
 
@@ -23,8 +21,7 @@ public class User {
         this.lastName = lastName;
         this.age = age;
         this.creator = creator;
-        userID++;
-        this.key=userID;
+
 
     }
 
@@ -80,8 +77,5 @@ public class User {
         return creator;
     }
 
-    public String getKey() {
-        return String.valueOf(key);
-    }
 
 }

@@ -3,9 +3,14 @@
     <string name="pick_image_button">Pick an image</string>
     <string name="take_photo_button">Take a photo</string>
     <string name="classification_delimiter_text_view">-</string>
+    <string-array name="creator">
+        <item>False</item>
+        <item>True</item>
+    </string-array>
     <string name="face">Face</string>
     <string name="faceless">No face detected</string>
     <string name="logout">logout</string>
     <string name="welcome">Welcome!</string>
     <string name="button">Button</string>
+
 </resources>

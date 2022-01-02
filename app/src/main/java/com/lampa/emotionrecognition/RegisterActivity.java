@@ -7,8 +7,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,7 +31,7 @@ import com.google.firebase.database.ValueEventListener;
 
 
 
-public class RegisterActivity extends AppCompatActivity{
+public class RegisterActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     EditText emailEditText,passwordEditText,firstnameEditText,lastnameEditText,ageEditText;
     Button regBtn,retrunToLoginBtn;
     private FirebaseAuth mAuth;
@@ -36,12 +39,12 @@ public class RegisterActivity extends AppCompatActivity{
     private DatabaseReference myRef;
     private static final String USER ="User";
     private User user;
+    public static boolean creator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
         // Initialize User Details
@@ -52,6 +55,12 @@ public class RegisterActivity extends AppCompatActivity{
         ageEditText=findViewById(R.id.editText_Age);
         regBtn=findViewById(R.id.signup_btn);
         retrunToLoginBtn=findViewById(R.id.signin_btn);
+
+        Spinner emotionspinner = findViewById(R.id.emotionspinner);
+        ArrayAdapter<CharSequence> adapter =ArrayAdapter.createFromResource(this,R.array.creator, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        emotionspinner.setAdapter(adapter);
+        emotionspinner.setOnItemSelectedListener(this);
 
 
 
@@ -74,17 +83,21 @@ public class RegisterActivity extends AppCompatActivity{
             Toast.makeText(RegisterActivity.this,"fill all the required fields ",Toast.LENGTH_LONG).show();
         }
         else{
-            user = new User(emailEditText.getText().toString(),passwordEditText.getText().toString(),firstnameEditText.getText().toString(),lastnameEditText.getText().toString(),ageEditText.getText().toString(),false);
+            user = new User(emailEditText.getText().toString(),passwordEditText.getText().toString(),firstnameEditText.getText().toString(),lastnameEditText.getText().toString(),ageEditText.getText().toString(),creator);
             mAuth.createUserWithEmailAndPassword(emailEditText.getText().toString(), passwordEditText.getText().toString())
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
-                                FirebaseUser user =mAuth.getCurrentUser();
-                                updateUI(user);
-                                startActivity(new Intent(RegisterActivity.this,LoginActivity.class));
-                                Toast.makeText(RegisterActivity.this,emailEditText.getText().toString()+passwordEditText.getText().toString()+ageEditText.getText().toString()+lastnameEditText.getText().toString(),Toast.LENGTH_LONG).show();
-                            } else {
+                                //FirebaseUser curr_user =mAuth.getCurrentUser();
+                                updateUI();
+                                if(user.isCreator())
+                                    startActivity(new Intent(RegisterActivity.this,CreatorActivity.class));
+                                else
+                                    startActivity(new Intent(RegisterActivity.this,LoginActivity.class));
+                                //Toast.makeText(RegisterActivity.this,emailEditText.getText().toString()+passwordEditText.getText().toString()+ageEditText.getText().toString()+lastnameEditText.getText().toString(),Toast.LENGTH_LONG).show();
+                            }
+                            else {
                                 Toast.makeText(RegisterActivity.this,"User already exists",Toast.LENGTH_LONG).show();
                             }
                         }
@@ -98,11 +111,23 @@ public class RegisterActivity extends AppCompatActivity{
     public void ReturnToLoginScreenOnClick(View view) {
         startActivity(new Intent(RegisterActivity.this,LoginActivity.class));
     }
-    public void updateUI(FirebaseUser currentUser){
-        String keyId = "User ID: "+myRef.push().getKey();
+    public void updateUI(){
+        String keyId = emailEditText.getText().toString().replace(".","@");;
         myRef.child("Users").child(keyId).setValue(user);
     }
 
 
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long l) {
+        String text = parent.getItemAtPosition(position).toString();
+        if(text.equals("True"))
+            creator=true;
+        else
+            creator=false;
+    }
 
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+
+    }
 }
