@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -127,7 +129,34 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_bar_main,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.menu_home_screen:
+            case R.id.menu_logout:
+            case R.id.menu_back:
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(this,LoginActivity.class));
+                finish();
+                return true;
+            case R.id.menu_refresh:
+                startActivity(new Intent(this,RegisterActivity.class));
+                finish();
+                return true;
+
+        }
+        return super.onOptionsItemSelected(item);
+    }
+    @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
 
     }
+
+
+
 }
