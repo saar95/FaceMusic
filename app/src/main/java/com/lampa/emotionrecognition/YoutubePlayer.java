@@ -56,6 +56,9 @@ public class YoutubePlayer extends AppCompatActivity{
     private FirebaseDatabase database;
     private DatabaseReference myRef;
     public String playlistToPlay;
+    NotificationManagerCompat notificationManagerCompat;
+    Notification notification;
+
 
 
 
@@ -73,42 +76,21 @@ public class YoutubePlayer extends AppCompatActivity{
 
 
 
-        /*youTubePlayerView = findViewById(R.id.youtube_player_youtubeplayerview);
-        getLifecycle().addObserver(youTubePlayerView);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            NotificationChannel channel = new NotificationChannel("myCH", "My Channel", NotificationManager.IMPORTANCE_DEFAULT);
+            NotificationManager manager = getSystemService(NotificationManager.class);
+            manager.createNotificationChannel(channel);
+        }
 
-        youTubePlayerView.addYouTubePlayerListener(new AbstractYouTubePlayerListener() {
-            @Override
-            public void onReady(@NonNull YouTubePlayer youTubePlayer) {
-                randomSong();
-                //ChoosePlaylist(choosenEmotion);
-                String videoId = playlistToPlay;
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(YoutubePlayer.this, "myCH")
+                .setSmallIcon(R.drawable.ic_notification)
+                .setContentTitle("FaceMusic")
+                .setContentText("Here is a song for your mood - " + choosenEmotion);
 
-                /*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
-                    NotificationChannel channel = new NotificationChannel("my not", "my not", NotificationManager.IMPORTANCE_DEFAULT);
-                    NotificationManager manager = getSystemService(NotificationManager.class);
-                    manager.createNotificationChannel(channel);
-                }
+        notification = builder.build();
+        notificationManagerCompat = NotificationManagerCompat.from(YoutubePlayer.this);
+        notificationManagerCompat.notify(1,notification);
 
-
-                NotificationCompat.Builder builder = new NotificationCompat.Builder(YoutubePlayer.this, "note");
-                builder.setContentTitle("FaceMusic");
-                builder.setContentText("Here is a song for your mood - " + choosenEmotion);
-                builder.setSmallIcon(R.drawable.ic_notification);
-                builder.setAutoCancel(true);
-                NotificationManagerCompat managerCompat = NotificationManagerCompat.from(YoutubePlayer.this);
-                managerCompat.notify(1,builder.build());
-
-
-
-
-                youTubePlayer.loadVideo(videoId,0);
-
-            }
-        });
-
-    }
-
-         */
 
     }
     @Override
@@ -155,6 +137,8 @@ public class YoutubePlayer extends AppCompatActivity{
                                     youTubePlayerView.addYouTubePlayerListener(new AbstractYouTubePlayerListener() {
                                         @Override
                                         public void onReady(@NonNull YouTubePlayer youTubePlayer) {
+
+
 
                                             youTubePlayer.loadVideo(data,0);
 
