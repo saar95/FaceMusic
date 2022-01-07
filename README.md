@@ -2,7 +2,7 @@
 # FaceMusic
 This app detects your emotions based on your picture and creates playlists according to your mood.  
 
-YouTube Link: [here](https://www.youtube.com/watch?v=-4nnFTKsNhk)
+YouTube Link: [here](https://www.youtube.com/watch?v=qLjUGwrKTVs)
 
 Collaborates: [Omer Aden](https://github.com/omer6546), [Almog Reuveny](https://github.com/almogre02), [Saar Barel](https://github.com/saar95)
 
