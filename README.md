@@ -6,6 +6,8 @@ YouTube Link: [here](https://www.youtube.com/watch?v=qLjUGwrKTVs)
 
 Collaborates: [Omer Aden](https://github.com/omer6546), [Almog Reuveny](https://github.com/almogre02), [Saar Barel](https://github.com/saar95)
 
+[Project summary](https://github.com/almogre02/FaceMusic/blob/main/%D7%9E%D7%A6%D7%92%D7%AA%20%D7%A1%D7%99%D7%95%D7%9D%20%D7%A4%D7%A8%D7%95%D7%99%D7%99%D7%A7%D7%98.pdf)
+
 
 <img src="https://user-images.githubusercontent.com/20986238/146235701-4a91d541-29f8-4fdb-9999-c7a6fdd8f42e.jpg" width="288" height="512">
 
