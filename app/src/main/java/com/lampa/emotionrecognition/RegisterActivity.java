@@ -81,11 +81,14 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
     public void SignUPOnClick(View view) {
         database=FirebaseDatabase.getInstance("https://face-c2bc7-default-rtdb.europe-west1.firebasedatabase.app/");
         myRef=database.getReference();
-        if (emailEditText.getText().toString().trim().length() == 0 || passwordEditText.getText().toString().trim().length() == 0 || firstnameEditText.getText().toString().trim().length() == 0 || lastnameEditText.getText().toString().trim().length() == 0 || ageEditText.getText().toString().trim().length() == 0){
+            if  (emailEditText.getText().toString().trim().length() == 0 || passwordEditText.getText().toString().trim().length() == 0 ||
+                firstnameEditText.getText().toString().trim().length() == 0 || lastnameEditText.getText().toString().trim().length() == 0 ||
+                ageEditText.getText().toString().trim().length() == 0){
             Toast.makeText(RegisterActivity.this,"fill all the required fields ",Toast.LENGTH_LONG).show();
         }
         else{
-            user = new User(emailEditText.getText().toString(),passwordEditText.getText().toString(),firstnameEditText.getText().toString(),lastnameEditText.getText().toString(),ageEditText.getText().toString(),creator);
+            user = new User(emailEditText.getText().toString(),passwordEditText.getText().toString(),firstnameEditText.getText().toString(),
+                            lastnameEditText.getText().toString(),ageEditText.getText().toString(),creator);
             mAuth.createUserWithEmailAndPassword(emailEditText.getText().toString(), passwordEditText.getText().toString())
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                         @Override
@@ -97,7 +100,6 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
                                     startActivity(new Intent(RegisterActivity.this,CreatorActivity.class));
                                 else
                                     startActivity(new Intent(RegisterActivity.this,LoginActivity.class));
-                                //Toast.makeText(RegisterActivity.this,emailEditText.getText().toString()+passwordEditText.getText().toString()+ageEditText.getText().toString()+lastnameEditText.getText().toString(),Toast.LENGTH_LONG).show();
                             }
                             else {
                                 Toast.makeText(RegisterActivity.this,"User already exists",Toast.LENGTH_LONG).show();
@@ -114,7 +116,7 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
         startActivity(new Intent(RegisterActivity.this,LoginActivity.class));
     }
     public void updateUI(){
-        String keyId = emailEditText.getText().toString().replace(".","@");;
+        String keyId = emailEditText.getText().toString().replace(".","@");
         myRef.child("Users").child(keyId).setValue(user);
     }
 

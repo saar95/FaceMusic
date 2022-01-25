@@ -43,12 +43,6 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTube
 
 
 
-
-
-
-
-
-
 public class YoutubePlayer extends AppCompatActivity{
     private YouTubePlayerView youTubePlayerView;
     private String choosenEmotion = MainActivity.determine_emotion;
@@ -127,13 +121,11 @@ public class YoutubePlayer extends AppCompatActivity{
                         int size = (int) dataSnapshot.getChildrenCount();
                         Random rand = new Random();
                         int rand_int = rand.nextInt(size);
-                        System.out.println(rand_int+"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
                         myRef.child("Songs").child(choosenEmotion).child(String.valueOf(rand_int)).addValueEventListener(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
                                 if(snapshot.exists()){
                                     String data = snapshot.getValue().toString();
-                                    System.out.println(data+"##############################");
                                     youTubePlayerView.addYouTubePlayerListener(new AbstractYouTubePlayerListener() {
                                         @Override
                                         public void onReady(@NonNull YouTubePlayer youTubePlayer) {

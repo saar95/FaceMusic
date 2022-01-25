@@ -53,13 +53,21 @@ public class CreatorActivity extends AppCompatActivity implements AdapterView.On
         uploadSong.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openUploadSongPopUp();
+                if(songEditText.getText().toString().equals(""))
+                    Toast.makeText(CreatorActivity.this, "Please fill the song link", Toast.LENGTH_LONG).show();
+                else
+                    openUploadSongPopUp();
             }
         });
+
+
         removeSong.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openRemoveSongPopUp();
+                if(songEditText.getText().toString().equals(""))
+                    Toast.makeText(CreatorActivity.this, "Please fill the song link", Toast.LENGTH_LONG).show();
+                else
+                    openRemoveSongPopUp();
 
             }
         });
@@ -92,7 +100,7 @@ public class CreatorActivity extends AppCompatActivity implements AdapterView.On
 
 
     public void uploadSongOnClick() {
-        fireBaseLength("Songs/"+emotion);
+        uploadSong("Songs/"+emotion);
 
     }
 
@@ -133,15 +141,20 @@ public class CreatorActivity extends AppCompatActivity implements AdapterView.On
 
     }
 
-    private void fireBaseLength(String child){
+    private void uploadSong(String child){
         myRef.child(child)
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         // get total available quest
-                        int size = (int) dataSnapshot.getChildrenCount();
-                        myRef.child("Songs").child(emotion).child(String.valueOf(size)).setValue(songEditText.getText().toString());
-                        Toast.makeText(CreatorActivity.this, "The song was uploaded successfully", Toast.LENGTH_LONG).show();
+                        if(songEditText.getText().toString().equals("")){
+                            Toast.makeText(CreatorActivity.this, "Please fill the song link", Toast.LENGTH_LONG).show();
+                        }
+                        else {
+                            int size = (int) dataSnapshot.getChildrenCount();
+                            myRef.child("Songs").child(emotion).child(String.valueOf(size)).setValue(songEditText.getText().toString());
+                            Toast.makeText(CreatorActivity.this, "The song was uploaded successfully", Toast.LENGTH_LONG).show();
+                        }
 
                     }
                     @Override

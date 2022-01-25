@@ -66,6 +66,7 @@ public class LoginActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
+                                //Create user and save his inf in realtime database
                                 String key = emailEditText.getText().toString().replace(".","@");
                                 myRef.child("Users").child(key).child("creator").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
                                     @Override
