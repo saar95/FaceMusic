@@ -4,6 +4,8 @@ This app detects your emotions based on your picture and creates playlists accor
 
 YouTube Link: [here](https://www.youtube.com/watch?v=qLjUGwrKTVs)
 
+Apk Download Link: [here](https://mega.nz/file/0Yw3jYDC#1RhxpNQIXi_I_zZeMVD2m1Ye-XkXUJxjt5mOBQDn9Og)
+
 Collaborates: [Omer Aden](https://github.com/omer6546), [Almog Reuveny](https://github.com/almogre02), [Saar Barel](https://github.com/saar95)
 
 [Project summary](https://github.com/almogre02/FaceMusic/blob/main/%D7%9E%D7%A6%D7%92%D7%AA%20%D7%A1%D7%99%D7%95%D7%9D%20%D7%A4%D7%A8%D7%95%D7%99%D7%99%D7%A7%D7%98.pdf)
